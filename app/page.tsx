@@ -1,13 +1,12 @@
-import Image from "next/image";
-import { Playfair_Display } from "next/font/google";
 import { ReactNode } from "react";
+import Header from "./components/Header";
+import Cards from "./components/Cards";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>
-        
-      </div>
-    </main>
-  );
+    return (
+        <main className="flex flex-col gap-12 pb-10">
+            <Header />
+            <Cards />
+        </main>
+    );
 }
