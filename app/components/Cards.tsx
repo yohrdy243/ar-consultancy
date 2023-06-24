@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-import { IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowForward } from "react-icons/io";
 
 export function Card({ children }: { children: ReactNode }) {
     return (
-        <div className="border rounded-md p-8 flex flex-col gap-4 shadow-sm hover:shadow-md ">
+        <div className="hover:text-green-700 border rounded-md p-8 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer">
             {children}
         </div>
     );
@@ -20,7 +20,10 @@ function ServiceCard({
 }) {
     return (
         <Card>
-            <h1 className="hover:text-green-700 text-xl font-bold inline-flex items-center gap-2">{title}<IoIosArrowForward/></h1>
+            <h1 className=" text-xl font-bold inline-flex items-center gap-2">
+                {title}
+                <IoIosArrowForward />
+            </h1>
             <p className="line-clamp-3">{subtitle}</p>
         </Card>
     );
@@ -73,13 +76,16 @@ const servicesData = [
 
 export default function Cards() {
     return (
-        <div className="px-32">
-            <div className="flex justify-center items-center py-10">
+        <div className="px-32 ">
+            <div className="flex justify-center items-center pb-10">
                 <h1 className="text-4xl font-bold">Nuestros Servicios</h1>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-                {servicesData.map((serviceData) => (
-                    <ServiceCard {...serviceData} />
+                {servicesData.map((serviceData, index) => (
+                    <ServiceCard
+                        {...serviceData}
+                        key={`SERVICE_CARD_KEY_${index}`}
+                    />
                 ))}
             </div>
         </div>
