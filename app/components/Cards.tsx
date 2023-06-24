@@ -76,7 +76,7 @@ const servicesData = [
 
 export default function Cards() {
     return (
-        <div className="px-32 ">
+        <div className="lg:px-32 px-8">
             <div className="flex justify-center items-center pb-10">
                 <h1 className="text-4xl font-bold">Nuestros Servicios</h1>
             </div>

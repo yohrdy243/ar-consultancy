@@ -41,10 +41,14 @@ function Slide({
 }) {
     return (
         <div
-            className={`transition-transform bg-center w-full bg-no-repeat bg-cover bg-gray-700 bg-blend-multiply`}
-            style={{ backgroundImage: `url(${src})`, height: "100%" }}
+            className="bg-center w-full bg-no-repeat bg-cover bg-gray-700 bg-blend-multiply transition-all duration-500"
+            style={{
+                backgroundImage: `url(${src})`,
+                height: "100%",
+                opacity: 1,
+            }}
         >
-            <div className="px-4 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
+            <div className="px-10 mx-auto max-w-screen-xl text-center py-24 lg:py-56">
                 <h1 className="mb-4 text-4xl font-bold tracking-tight leading-none text-white md:text-5xl lg:text-6xl">
                     {title}
                 </h1>
@@ -99,7 +103,7 @@ export default function Header() {
     }, []);
 
     return (
-        <div className="relative w-full">
+        <div className="relative w-full transition-all duration-200">
             {/* Carousel wrapper */}
             <Slide {...slidesData[activeSlide]} />
             {/* Slider controls */}

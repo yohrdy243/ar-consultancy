@@ -23,10 +23,11 @@ export default function RootLayout({
         <html lang="en">
             <body className={`${playfair.variable} ${open.variable}`}>
                 <Navbar />
+                <div className="mt-20">
                 {children}
+                </div>
                 <Footer />
             </body>
         </html>
     );
 }
-
