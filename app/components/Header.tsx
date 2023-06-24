@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BsArrowLeftCircle, BsArrowRightCircle } from "react-icons/bs";
 
 function SlidesControls({
@@ -85,6 +85,18 @@ const slidesData = [
 
 export default function Header() {
     const [activeSlide, setActiveSlide] = useState<number>(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveSlide((currentSlide) =>
+                nextSlide(currentSlide, slidesData.length)
+            );
+        }, 5000);
+
+        return () => {
+            clearInterval(interval);
+        };
+    }, []);
 
     return (
         <div className="relative w-full">

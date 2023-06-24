@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import Header from "./components/Header";
 import Cards from "./components/Cards";
 import Clients from "./components/Clients";
+import Contact from "./components/Contact";
 
 export default function Home() {
     return (
@@ -9,6 +10,7 @@ export default function Home() {
             <Header />
             <Cards />
             <Clients/>
+            <Contact/>
         </main>
     );
 }
