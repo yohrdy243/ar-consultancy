@@ -6,9 +6,12 @@ import Link from "next/link";
 
 const items = ["inicio", "nuestro equipo", "quienes somos", "contacto"];
 
-function NavItems() {
+function NavItems({ handleClose }: { handleClose?: () => void }) {
     return items.map((name) => (
-        <li className="hover:scale-110 transition ease-in-out duration-100">
+        <li
+            className="hover:scale-110 transition ease-in-out duration-100"
+            onClick={handleClose}
+        >
             <Link href={`/${name === "inicio" ? "" : name.replace(/\s/g, "")}`}>
                 {name}
             </Link>
@@ -42,7 +45,7 @@ export default function Navbar() {
                 {menu ? (
                     <div className="lg:hidden">
                         <ul className="bg-stone-800 uppercase gap-2 w-full flex flex-col justify-center items-center cursor-pointer py-6">
-                            <NavItems />
+                            <NavItems handleClose={handleMenu} />
                         </ul>
                     </div>
                 ) : null}
