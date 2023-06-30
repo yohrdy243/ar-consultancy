@@ -6,9 +6,10 @@ import { Playfair_Display, Open_Sans } from "next/font/google";
 const open = Open_Sans({ subsets: ["latin"], variable: "--font-open" });
 
 export const metadata = {
-    title: "Albujar Rafaile & Asociados",
-    description: "AR & Asociados",
+    title: "AR Consultoria",
+    description: "Toda la Asesoria Empresarial que nesecitas!",
 };
+
 export const playfair = Playfair_Display({
     subsets: ["latin"],
     variable: "--font-playfair",

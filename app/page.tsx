@@ -9,8 +9,8 @@ export default function Home() {
         <main className="flex flex-col gap-12 pb-10">
             <Header />
             <Cards />
-            <Clients/>
-            <Contact/>
+            <Clients />
+            <Contact />
         </main>
     );
 }

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 p {
-  font-family: var(--font-open);
+    font-family: var(--font-open);
 }
 
 h1,
@@ -12,5 +12,27 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-playfair);
+    font-family: var(--font-playfair);
+}
+
+.slide-container {
+    overflow: hidden;
+}
+
+.slide {
+    animation: scroll 80s linear infinite;
+    white-space: nowrap;
+}
+.slide > div {
+    display: inline-block;
+    padding: 4px;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
 }
