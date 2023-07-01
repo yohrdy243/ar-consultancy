@@ -1,16 +1,15 @@
-import { ReactNode } from "react";
 import Header from "./components/Header";
-import Cards from "./components/Cards";
 import Clients from "./components/Clients";
 import Contact from "./components/Contact";
+import Services from "./components/Services";
 
 export default function Home() {
     return (
-        <main className="flex flex-col gap-12 pb-10">
+        <section className="flex flex-col gap-12 pb-10">
             <Header />
-            <Cards />
+            <Services />
             <Clients />
             <Contact />
-        </main>
+        </section>
     );
 }

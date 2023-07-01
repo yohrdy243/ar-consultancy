@@ -21,12 +21,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en">
+        <html lang="es">
+            <head>
+                <meta name="view-transition" content="same-origin"/>
+            </head>
             <body className={`${playfair.variable} ${open.variable}`}>
                 <Navbar />
-                <div className="mt-20">
-                {children}
-                </div>
+                <main className="mt-20">{children}</main>
                 <Footer />
             </body>
         </html>

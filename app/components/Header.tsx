@@ -103,7 +103,7 @@ export default function Header() {
     }, []);
 
     return (
-        <div className="relative w-full transition-all duration-200">
+        <section className="relative w-full transition-all duration-200">
             {/* Carousel wrapper */}
             <Slide {...slidesData[activeSlide]} />
             {/* Slider controls */}
@@ -119,6 +119,6 @@ export default function Header() {
                     );
                 }}
             />
-        </div>
+        </section>
     );
 }

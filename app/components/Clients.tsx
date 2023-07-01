@@ -9,7 +9,7 @@ import {
 const clients = new Array(10);
 export default function Clients() {
     return (
-        <div className=" py-12 border border-y-1 border-y-green-500 border-dashed">
+        <section className=" py-12 border border-y-1 border-y-green-500 border-dashed">
             <h1 className=" text-4xl font-bold text-center">
                 Nuestros Clientes
             </h1>
@@ -77,6 +77,6 @@ export default function Clients() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

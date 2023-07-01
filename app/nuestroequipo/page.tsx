@@ -1,21 +1,46 @@
 import Image from "next/image";
 import miguelPhoto from "../../public/images/1607652223448.jpeg";
 import oscarPhoto from "../../public/images/1620270650375.jpeg";
-function TeamCard({ imageSrc, name }: { imageSrc: string; name: string }) {
+
+const teamData = [
+    {
+        imageSrc: miguelPhoto.src,
+        name: "Miguel Albújar Rafaile",
+        role: "Socio Director / Partner Managing",
+        email: "malbujar@arconsultoria.pe",
+    },
+    {
+        imageSrc: oscarPhoto.src,
+        name: "Oscar Albújar Rafaile",
+        role: "Socio / Partner",
+        email: "oalbujar@arconsultoria.pe",
+    },
+];
+
+function TeamCard({
+    imageSrc,
+    name,
+    role,
+    email,
+}: {
+    imageSrc: string;
+    name: string;
+    role: string;
+    email: string;
+}) {
     return (
-        <div
-            className="border rounded-tl-[80px] rounded-br-[80px]  w-96 h-[60vh] lg:hover:scale-105 transition ease-in-out duration-300"
-            style={{
-                backgroundImage: `url(${imageSrc})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-            }}
-        >
-            <div className="flex h-full items-end  font-semibold justify-start text-white p-4">
-                <div className="flex flex-col">
-                    <h2 className="text-3xl">{name}</h2>
-                    <p>Socio Director / Partner Managing</p>
-                </div>
+        <div className="flex flex-col gap-1">
+            <Image
+                className="rounded-xl"
+                src={imageSrc}
+                alt={name}
+                width={350}
+                height={350}
+            />
+            <div className="px-1">
+                <h1 className="text-2xl font-semibold">{name}</h1>
+                <p>{role}</p>
+                <p className="text-sm text-gray-500">{email}</p>
             </div>
         </div>
     );
@@ -23,9 +48,18 @@ function TeamCard({ imageSrc, name }: { imageSrc: string; name: string }) {
 
 export default function page() {
     return (
-        <div className="py-16 px-4 lg:px-48 flex flex-col lg:flex-row justify-center items-center w-full gap-10 lg:gap-36">
-            <TeamCard imageSrc={miguelPhoto.src} name="Miguel Albujar" />
-            <TeamCard imageSrc={oscarPhoto.src} name="Oscar Albujar" />
-        </div>
+        <section className="py-10">
+            <div className="lg:px-32 px-8 flex flex-col">
+                <div className="pb-16 flex justify-center">
+                    <h1 className="text-4xl font-bold">Nuestro Equipo</h1>
+                </div>
+                <div className="flex justify-center gap-20">
+                    {teamData.map((data) => (
+                        <TeamCard {...data} />
+                    ))}
+                </div>
+                <div className="flex justify-around"></div>
+            </div>
+        </section>
     );
 }

@@ -74,9 +74,9 @@ const servicesData = [
     },
 ];
 
-export default function Cards() {
+export default function Services() {
     return (
-        <div className="lg:px-32 px-8">
+        <section className="lg:px-32 px-8">
             <div className="flex justify-center items-center pb-10">
                 <h1 className="text-4xl font-bold">Nuestros Servicios</h1>
             </div>
@@ -88,6 +88,6 @@ export default function Cards() {
                     />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }
