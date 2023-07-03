@@ -29,7 +29,9 @@ export default function Navbar() {
             <nav className="fixed w-full h-20 top-0 z-30  text-white bg-stone-800">
                 <div className="flex justify-between items-center lg:px-20 px-4 py-2">
                     <div className="flex items-center justify-start">
-                        <Logo size={60} />
+                        <Link href={"/"}>
+                            <Logo size={60} />
+                        </Link>
                         <h1>AR Consultoría</h1>
                     </div>
                     <div className="hidden lg:flex">
