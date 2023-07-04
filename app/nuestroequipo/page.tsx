@@ -176,10 +176,10 @@ function TeamCard({
 
 export default function page() {
     return (
-        <section className="py-10">
+        <section className="py-10 ">
             <div className="lg:px-32 px-8">
                 <div className="pb-16 flex justify-center">
-                    <h1 className="text-4xl font-bold">Nuestro Equipo</h1>
+                    <h1 className="text-3xl font-bold">Nuestro Equipo</h1>
                 </div>
                 <div className="flex justify-center">
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x gap-20 lg:gap-0">

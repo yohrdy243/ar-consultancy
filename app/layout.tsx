@@ -1,5 +1,6 @@
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+import WhatsApp from "./components/WhatsApp";
 import "./globals.css";
 import { Playfair_Display, Open_Sans } from "next/font/google";
 
@@ -23,11 +24,12 @@ export default function RootLayout({
     return (
         <html lang="es">
             <head>
-                <meta name="view-transition" content="same-origin"/>
+                <meta name="view-transition" content="same-origin" />
             </head>
             <body className={`${playfair.variable} ${open.variable}`}>
                 <Navbar />
                 <main className="mt-20">{children}</main>
+                <WhatsApp />
                 <Footer />
             </body>
         </html>

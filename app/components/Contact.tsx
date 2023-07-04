@@ -5,7 +5,7 @@ export default function Contact() {
                 <h1 className="text-4xl font-bold">Contactanos!</h1>
             </div>
             <div className="p-4">
-                <div className="border rounded-md p-12">
+                <div className=" rounded-md p-12">
                     <form>
                         <div className="grid gap-6 mb-6 md:grid-cols-2">
                             <div>
