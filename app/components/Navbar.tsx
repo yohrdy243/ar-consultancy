@@ -9,6 +9,7 @@ const items = ["inicio", "nuestro equipo", "quienes somos", "contacto"];
 function NavItems({ handleClose }: { handleClose?: () => void }) {
     return items.map((name) => (
         <li
+            key={`NAV_ITEM_${name}`}
             className="hover:scale-110 transition ease-in-out duration-100"
             onClick={handleClose}
         >
