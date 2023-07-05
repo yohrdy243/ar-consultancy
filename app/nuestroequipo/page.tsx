@@ -176,7 +176,7 @@ function TeamCard({
 
 export default function page() {
     return (
-        <section className="py-10 ">
+        <section className="py-10">
             <div className="lg:px-32 px-8">
                 <div className="pb-16 flex justify-center">
                     <h1 className="text-3xl font-bold">Nuestro Equipo</h1>

@@ -2,7 +2,7 @@ import { Logo } from "../components/Logo";
 
 export default function page() {
     return (
-        <div className="py-10">
+        <div className="py-32">
             <div className="flex flex-col justify-center gap-10 lg:px-32 px-8">
                 <h1 className="flex justify-start text-3xl font-bold">
                     Quienes Somos
