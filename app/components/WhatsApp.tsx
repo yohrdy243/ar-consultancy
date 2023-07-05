@@ -3,8 +3,9 @@
 import { BsWhatsapp } from "react-icons/bs";
 
 const handleWhatsAppClick = () => {
-    const phoneNumber = "+51943506975";
-    const message = "Hola AR Consultoría";
+    const phoneNumber = "+51948312714";
+    const message =
+        "Hola, Quisiera saber acerca de un servicio de Consultoria.";
     const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(
         message
     )}`;
@@ -18,7 +19,7 @@ export default function WhatsApp() {
             className="fixed bottom-4 right-4 z-10 p-4 rounded-full bg-[#25D366] text-white shadow-lg"
             onClick={handleWhatsAppClick}
         >
-            <BsWhatsapp size={30}/>
+            <BsWhatsapp size={30} />
         </button>
     );
 }

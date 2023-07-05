@@ -56,7 +56,7 @@ const servicesData = [
         link: "",
     },
     {
-        title: "Asesoría en Importaciones.",
+        title: "Asesoría en Importaciones",
         subtitle:
             "Brindamos servicios de asesoría tributaria de forma ilimitada por vía telefónica, correo electrónico o reuniones presenciales para poder resolver cualquier duda que puedan tener las empresas sobre las operaciones que se llevan a cabo.",
         link: "",

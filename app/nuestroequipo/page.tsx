@@ -116,20 +116,22 @@ const teamData: TTeamData[] = [
 ];
 
 function TimeLine({ data }: { data: TExperience[] }) {
-    return data.map(({ title, subTitle, description }) => (
+    return (
         <ol className="relative text-gray-500 border-l border-gray-200 cursor-pointer hover:text-green-700">
-            <li className="mb-10 ml-6">
-                <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-4 ring-white ">
-                    <BsCalendarCheckFill />
-                </span>
-                <h3 className="font-medium  leading-tight">{title}</h3>
-                {subTitle ? <p className="text-sm">{subTitle} </p> : null}
-                {description ? (
-                    <p className="text-xs   ">{description}</p>
-                ) : null}
-            </li>
+            {data.map(({ title, subTitle, description }) => (
+                <li className="mb-10 ml-6" key={`EXPERINCE_${title}`}>
+                    <span className="absolute flex items-center justify-center w-8 h-8 bg-gray-100 rounded-full -left-4 ring-4 ring-white ">
+                        <BsCalendarCheckFill />
+                    </span>
+                    <h3 className="font-medium  leading-tight">{title}</h3>
+                    {subTitle ? <p className="text-sm">{subTitle} </p> : null}
+                    {description ? (
+                        <p className="text-xs   ">{description}</p>
+                    ) : null}
+                </li>
+            ))}
         </ol>
-    ));
+    );
 }
 
 function TeamCard({
@@ -184,7 +186,10 @@ export default function page() {
                 <div className="flex justify-center">
                     <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x gap-20 lg:gap-0">
                         {teamData.map((data) => (
-                            <TeamCard {...data} />
+                            <TeamCard
+                                {...data}
+                                key={`TEAM_MEMBER_${data.name}`}
+                            />
                         ))}
                     </div>
                 </div>

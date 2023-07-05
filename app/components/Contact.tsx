@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
+import Swal from "sweetalert2";
 
 export default function Contact() {
     const form = useRef<HTMLFormElement>(null);
@@ -12,17 +13,31 @@ export default function Contact() {
         if (form.current) {
             emailjs
                 .sendForm(
-                    "service_7fu5knt",
-                    "template_beky257",
+                    "service_256rktc",
+                    "template_l5anyg9",
                     form.current,
-                    "wMeRDDfOx2ntELaa9"
+                    "3EL6IqG99bUhnCrrF"
                 )
                 .then(
                     (result) => {
-                        console.log(result.text);
+                        Swal.fire({
+                            position: "center",
+                            icon: "success",
+                            title: "Tu Solicitud fue enviada!",
+                            text: "Pronto nos comunicaremos contigo",
+                            showConfirmButton: false,
+                            timer: 2200,
+                        });
                     },
                     (error) => {
-                        console.log(error.text);
+                        Swal.fire({
+                            position: "center",
+                            icon: "error",
+                            title: "Hubo un error al Enviar la Solicitud!",
+                            text: "Intentalo más tarde",
+                            showConfirmButton: false,
+                            timer: 2200,
+                        });
                     }
                 );
         }
@@ -39,28 +54,28 @@ export default function Contact() {
                         <div className="grid gap-6 mb-6 md:grid-cols-2">
                             <div>
                                 <label
-                                    htmlFor="first_name"
+                                    htmlFor="firstName"
                                     className="block mb-2 text-sm font-medium text-gray-900"
                                 >
                                     Nombres
                                 </label>
                                 <input
                                     type="text"
-                                    name="first_name"
+                                    name="firstName"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder=""
                                 />
                             </div>
                             <div>
                                 <label
-                                    htmlFor="last_name"
+                                    htmlFor="lastName"
                                     className="block mb-2 text-sm font-medium text-gray-900"
                                 >
                                     Apellidos
                                 </label>
                                 <input
                                     type="text"
-                                    name="last_name"
+                                    name="lastName"
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     placeholder=""
                                 />
@@ -106,24 +121,22 @@ export default function Contact() {
                                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                 >
                                     <option>Elegir Servicio</option>
-                                    <option value="Asesoria Contable">
-                                        Asesoria Contable
+                                    <option value="Apoyo en Procedimientos de Fiscalización o Verificación">
+                                        Apoyo en Procedimientos de Fiscalización
+                                        o Verificación
                                     </option>
-                                    <option value="Asesoria Financiera">
-                                        Asesoria Financiera
+                                    <option value="Auditoría Tributaria Preventiva">
+                                        Auditoría Tributaria Preventiva
                                     </option>
-                                    <option value="Asesoria Laboral">
-                                        Asesoria Laboral{" "}
+                                    <option value="Asesoría Tributaria Mensual">
+                                        Asesoría Tributaria Mensual
                                     </option>
-                                    <option value="Impuestos">Impuestos</option>
-                                    <option value="Periodos de Devenge">
-                                        Periodos de Devenge
+                                    <option value="Recuperación de Drawback y Saldo a favor del Exportador">
+                                        Recuperación de Drawback y Saldo a favor
+                                        del Exportador
                                     </option>
-                                    <option value="Asientos Contables">
-                                        Asientos Contables
-                                    </option>
-                                    <option value="Rectificaciones">
-                                        Rectificaciones
+                                    <option value="Asesoría en Importaciones">
+                                        Asesoría en Importaciones
                                     </option>
                                 </select>
                             </div>
