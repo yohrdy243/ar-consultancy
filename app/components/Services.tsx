@@ -1,67 +1,36 @@
 import { ReactNode } from "react";
-import { IoIosArrowForward } from "react-icons/io";
-
+import { LuExternalLink } from "react-icons/lu";
+import { HiOutlineBriefcase } from "react-icons/hi";
+import { TService, servicesData } from "../data/services";
+import Link from "next/link";
 export function Card({ children }: { children: ReactNode }) {
     return (
-        
         <div className="hover:text-green-700 transition-colors duration-100 ease-in-out border rounded-md p-8 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer">
             {children}
         </div>
     );
 }
 
-function ServiceCard({
-    title,
-    subtitle,
-    link,
-}: {
-    title: string;
-    subtitle: string;
-    link?: string;
-}) {
+function ServiceCard({ title, url, icon }: TService) {
+    const IconComponent = icon || HiOutlineBriefcase;
+
     return (
-        <Card>
-            <h1 className=" text-xl font-bold inline-flex items-center gap-2">
-                {title}
-                <IoIosArrowForward />
-            </h1>
-            <p className="line-clamp-3">{subtitle}</p>
-        </Card>
+        <Link href={url}>
+            <Card>
+                <IconComponent size={50} />
+
+                <h5 className="mb-2 text-2xl font-semibold tracking-tight h-20 overflow-hidden">
+                    <div className="line-clamp-2">{title}</div>
+                </h5>
+
+                <div className="inline-flex gap-2 items-center hover:text-blue-600">
+                    Ver Más
+                    <LuExternalLink />
+                </div>
+            </Card>
+        </Link>
     );
 }
-
-const servicesData = [
-    {
-        title: "Apoyo en Procedimientos de Fiscalización o Verificación",
-        subtitle:
-            "Este servicio desarrolla una estrategia fiscal con la finalidad de que nuestros clientes puedan afrontar un proceso de verificación o auditoría de la SUNAT con los mayores beneficios, salvaguardando sus derechos establecidos en las normas legales. Incluye el análisis y evaluación previa de la documentación contable y tributaria de nuestros clientes. Asimismo, nuestro equipo de profesionales acompaña permanentemente todo el proceso de fiscalización, evaluación y dando respuesta a los requerimientos del auditor fiscal",
-        link: "",
-    },
-    {
-        title: "Auditoría Tributaria Preventiva",
-        subtitle:
-            "Este servicio tiene como finalidad verificar la correcta determinación de los impuestos a los que se encuentran afectas las empresas de forma preventiva partiendo del análisis de las operaciones económicas registradas en la contabilidad, aplicando lo establecido en las normas tributarias vigentes en cada período tributario, de manera que no existan contingencias o reparos frente a un posible proceso de fiscalización de la SUNAT.",
-        link: "",
-    },
-    {
-        title: "Asesoría Tributaria Mensual",
-        subtitle:
-            "Brindamos servicios de asesoría tributaria de forma ilimitada por vía telefónica, correo electrónico o reuniones presenciales para poder resolver cualquier duda que puedan tener las empresas sobre las operaciones que se llevan a cabo.",
-        link: "",
-    },
-    {
-        title: "Recuperación de Drawback y Saldo a favor del Exportador",
-        subtitle:
-            "Brindamos servicios de asesoría tributaria de forma ilimitada por vía telefónica, correo electrónico o reuniones presenciales para poder resolver cualquier duda que puedan tener las empresas sobre las operaciones que se llevan a cabo.",
-        link: "",
-    },
-    {
-        title: "Asesoría en Importaciones",
-        subtitle:
-            "Brindamos servicios de asesoría tributaria de forma ilimitada por vía telefónica, correo electrónico o reuniones presenciales para poder resolver cualquier duda que puedan tener las empresas sobre las operaciones que se llevan a cabo.",
-        link: "",
-    },
-];
 
 export default function Services() {
     return (
