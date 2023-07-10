@@ -11,11 +11,11 @@ export function Card({ children }: { children: ReactNode }) {
     );
 }
 
-function ServiceCard({ title, url, icon }: TService) {
+function ServiceCard({ title, path, icon }: TService) {
     const IconComponent = icon || HiOutlineBriefcase;
 
     return (
-        <Link href={url}>
+        <Link href={`/servicios/${path}`}>
             <Card>
                 <IconComponent size={50} />
 
@@ -31,21 +31,25 @@ function ServiceCard({ title, url, icon }: TService) {
         </Link>
     );
 }
-
+export function ListServices() {
+    return (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+            {servicesData.map((serviceData, index) => (
+                <ServiceCard
+                    {...serviceData}
+                    key={`SERVICE_CARD_KEY_${index}`}
+                />
+            ))}
+        </div>
+    );
+}
 export default function Services() {
     return (
         <section className="lg:px-32 px-8">
             <div className="flex justify-center items-center pb-10">
                 <h1 className="text-4xl font-bold">Nuestros Servicios</h1>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-                {servicesData.map((serviceData, index) => (
-                    <ServiceCard
-                        {...serviceData}
-                        key={`SERVICE_CARD_KEY_${index}`}
-                    />
-                ))}
-            </div>
+            <ListServices />
         </section>
     );
 }

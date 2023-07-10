@@ -1,8 +1,8 @@
+import { Playfair_Display, Open_Sans } from "next/font/google";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import WhatsApp from "./components/WhatsApp";
 import "./globals.css";
-import { Playfair_Display, Open_Sans } from "next/font/google";
 
 const open = Open_Sans({ subsets: ["latin"], variable: "--font-open" });
 

@@ -41,7 +41,7 @@ function Slide({
 }) {
     return (
         <div
-            className="bg-center w-full bg-no-repeat bg-cover bg-gray-700 bg-blend-multiply transition-all duration-500"
+            className="bg-center w-full bg-no-repeat bg-cover bg-gray-500 bg-blend-multiply transition-all duration-500"
             style={{
                 backgroundImage: `url(${src})`,
                 height: "100%",
@@ -104,9 +104,9 @@ export default function Header() {
 
     return (
         <section className="relative w-full transition-all duration-200">
-            {/* Carousel wrapper */}
+
             <Slide {...slidesData[activeSlide]} />
-            {/* Slider controls */}
+
             <SlidesControls
                 next={() => {
                     setActiveSlide((currentIndex) =>

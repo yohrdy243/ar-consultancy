@@ -1,7 +1,12 @@
+"use client";
 import Image from "next/image";
 import miguelPhoto from "../../public/images/1607652223448.jpeg";
 import oscarPhoto from "../../public/images/1620270650375.jpeg";
 import { BsCalendarCheckFill } from "react-icons/bs";
+import PageHeader from "../components/PageHeader";
+import { HiOutlineMail } from "react-icons/hi";
+import { useModal } from "../hooks/useModal";
+import { ModalFormContact } from "../components/FormContact";
 
 type TExperience = {
     title: string;
@@ -142,58 +147,77 @@ function TeamCard({
     experience,
     certifications,
 }: TTeamData) {
+    const { show, handleShow, handleClose } = useModal();
+
     return (
-        <div className="px-10 col-span-1 flex flex-col items-center">
-            <div className="mb-20">
-                <Image
-                    className="rounded-xl"
-                    src={imageSrc}
-                    alt={name}
-                    width={350}
-                    height={350}
-                />
-                <div>
-                    <h1 className="text-2xl font-semibold">{name}</h1>
-                    <p>{role}</p>
-                    <p className="text-sm text-gray-500">{email}</p>
-                </div>
-            </div>
-            <div className="px-1 grid grid-cols-1 lg:grid-cols-2 gap-3 ">
-                <div className="col-span-1 flex flex-col gap-y-6">
-                    <h1 className="text-xl font-semibold">Experiencia</h1>
-                    <div className="px-6 flex flex-col justify-start">
-                        <TimeLine data={experience} />
+        <>
+            <ModalFormContact
+                title={`Contactar ${name}`}
+                {...{ show, handleClose }}
+            />
+            <div className="px-10 col-span-1 flex flex-col items-center">
+                <div className="mb-20">
+                    <Image
+                        className="rounded-xl"
+                        src={imageSrc}
+                        alt={name}
+                        width={350}
+                        height={350}
+                    />
+                    <div>
+                        <h1 className="text-2xl font-semibold">{name}</h1>
+                        <p>{role}</p>
+                        <div className="text-sm text-gray-500 inline-flex items-center gap-3">
+                            {email}
+                            <div
+                                className="border rounded-md px-2 py-1 w-fit hover:text-green-500 hover:bg-green-100"
+                                onClick={/*handleShow*/ () => {}}
+                            >
+                                <HiOutlineMail size={18} />
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="col-span-1 flex flex-col gap-y-6">
-                    <h1 className="text-xl font-semibold">Certificaciones</h1>
-                    <div className="px-6 flex flex-col justify-start">
-                        <TimeLine data={certifications} />
+                <div className="px-1 grid grid-cols-1 lg:grid-cols-2 gap-3 ">
+                    <div className="col-span-1 flex flex-col gap-y-6">
+                        <h1 className="text-xl font-semibold">Experiencia</h1>
+                        <div className="px-6 flex flex-col justify-start">
+                            <TimeLine data={experience} />
+                        </div>
+                    </div>
+                    <div className="col-span-1 flex flex-col gap-y-6">
+                        <h1 className="text-xl font-semibold">
+                            Certificaciones
+                        </h1>
+                        <div className="px-6 flex flex-col justify-start">
+                            <TimeLine data={certifications} />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
 export default function page() {
     return (
-        <section className="py-10">
-            <div className="lg:px-32 px-8">
-                <div className="pb-16 flex justify-center">
-                    <h1 className="text-3xl font-bold">Nuestro Equipo</h1>
-                </div>
-                <div className="flex justify-center">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x gap-20 lg:gap-0">
-                        {teamData.map((data) => (
-                            <TeamCard
-                                {...data}
-                                key={`TEAM_MEMBER_${data.name}`}
-                            />
-                        ))}
+        <>
+            {" "}
+            <PageHeader title="Nuestro Equipo" />
+            <section className="py-10 mt-20">
+                <div className="lg:px-32 px-8">
+                    <div className="flex justify-center">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x gap-20 lg:gap-0">
+                            {teamData.map((data) => (
+                                <TeamCard
+                                    {...data}
+                                    key={`TEAM_MEMBER_${data.name}`}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     );
 }
