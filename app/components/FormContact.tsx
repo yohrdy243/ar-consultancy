@@ -48,15 +48,7 @@ export function ModalFormContact({
     handleClose,
 }: TModalFromContact) {
     return (
-        <Modal show={show} handleClose={handleClose}>
-            <h1>{title}</h1>
-            <div
-                className="hover:border rounded-md p-1 text-gray-400"
-                onClick={handleClose}
-            >
-                <AiOutlineClose />
-            </div>
-
+        <Modal show={show} handleClose={handleClose} title={title}>
             <FormContact />
         </Modal>
     );

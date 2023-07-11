@@ -171,7 +171,7 @@ function TeamCard({
                             {email}
                             <div
                                 className="border rounded-md px-2 py-1 w-fit hover:text-green-500 hover:bg-green-100"
-                                onClick={/*handleShow*/ () => {}}
+                                onClick={handleShow}
                             >
                                 <HiOutlineMail size={18} />
                             </div>
