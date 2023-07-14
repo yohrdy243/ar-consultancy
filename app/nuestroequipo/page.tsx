@@ -201,10 +201,10 @@ function TeamCard({
 
 export default function page() {
     return (
-        <>
+        <section>
             {" "}
             <PageHeader title="Nuestro Equipo" />
-            <section className="py-10 mt-20">
+            <div className="py-10 mt-20">
                 <div className="lg:px-32 px-8">
                     <div className="flex justify-center">
                         <div className="grid grid-cols-1 lg:grid-cols-2 lg:divide-x gap-20 lg:gap-0">
@@ -217,7 +217,7 @@ export default function page() {
                         </div>
                     </div>
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 }
