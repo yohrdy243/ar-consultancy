@@ -2,7 +2,6 @@
 import { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import { useLoading } from "../hooks/useLoading";
-import { AiOutlineClose } from "react-icons/ai";
 import Swal from "sweetalert2";
 import { servicesData } from "../data/services";
 import Modal from "./Modal";

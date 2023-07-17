@@ -45,7 +45,7 @@ export default function Modal({
             <div className="fixed left-0 right-0 top-0 bottom-0 flex justify-center items-center">
                 <div
                     ref={modalRef}
-                    className="p-6 bg-white rounded-md max-w-screen-md overflow-y-auto"
+                    className="p-6 bg-white min-w-[80%] lg:min-w-[60%] rounded-md max-w-screen-md overflow-y-auto"
                 >
                     <div className="flex justify-between mb-8">
                         <h1 className="font-bold text-xl">{title}</h1>

@@ -1,6 +1,12 @@
 import { useState } from "react";
 
-export function useModal() {
+export type UseModalType = {
+    show: boolean;
+    handleShow: () => void;
+    handleClose: () => void;
+};
+
+export function useModal(): UseModalType {
     const [show, setShow] = useState(false);
 
     function handleClose() {

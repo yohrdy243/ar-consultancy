@@ -155,7 +155,7 @@ function TeamCard({
                 title={`Contactar ${name}`}
                 {...{ show, handleClose }}
             />
-            <div className="px-10 col-span-1 flex flex-col items-center">
+            <div className="px-8 col-span-1 flex flex-col items-center">
                 <div className="mb-20">
                     <Image
                         className="rounded-xl"
