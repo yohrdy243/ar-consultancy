@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 import { useState } from "react";
 import Link from "next/link";
 
-const items = ["inicio", "servicios", "nuestro equipo", "quienes somos"];
+const items = ["inicio", "servicios", "eventos","nuestro equipo", "quienes somos"];
 
 function NavItems({ handleClose }: { handleClose?: () => void }) {
     return items.map((name) => (

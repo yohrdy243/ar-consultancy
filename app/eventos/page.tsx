@@ -5,11 +5,12 @@ import { AiOutlineClockCircle } from "react-icons/ai";
 import { dateToString } from "../utils/convert";
 import { useEffect, useState, CSSProperties } from "react";
 import { getEvents } from "../services/eventsServices";
+import { Timestamp } from "firebase/firestore";
 
 export type TEvent = {
     title: string;
-    startDate: Date;
-    endDate: Date;
+    startDate: Timestamp;
+    endDate: Timestamp;
     description?: string;
     urlImage?: string;
     url?: string;
@@ -89,12 +90,25 @@ function EventCard({
                     <div className="flex flex-col">
                         <div className="flex items-center gap-2">
                             <AiOutlineClockCircle />
-                            {/* dateToString(startDate) and dateToString(endDate) functions need to be implemented */}
-                            {startDate.toISOString()}
+                            {startDate.toDate().toLocaleDateString("es-PE", {
+                                weekday: "long",
+                                month: "long",
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                            })}
                         </div>
                         <div className="flex items-center gap-2">
                             <AiOutlineClockCircle />
-                            {endDate.toISOString()}
+                            {endDate.toDate().toLocaleDateString("es-PE", {
+                                weekday: "long",
+                                month: "long",
+                                day: "numeric",
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                hour12: true,
+                            })}
                         </div>
                     </div>
                     <a
@@ -185,7 +199,9 @@ export default function Eventos() {
             <PageHeader title="Proximos Eventos" />
             <div className="py-10 mt-20 lg:px-32 px-8 grid grid-cols-3 gap-x-8 gap-y-4">
                 {eventsData.length !== 0 ? (
-                    eventsData.map((data) => <EventCard {...data} />)
+                    eventsData.map((data, index) => (
+                        <EventCard {...data} key={`EVENT_CARD_${index}`} />
+                    ))
                 ) : (
                     <>
                         <LoadingCard />

@@ -1,21 +1,87 @@
 import { Formik, Form, Field } from "formik";
-import { collection, addDoc, Timestamp } from "firebase/firestore";
+import {
+    collection,
+    addDoc,
+    Timestamp,
+    updateDoc,
+    doc,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { database, storage } from "../../database";
 import { TEvent } from "../eventos/page";
 import Swal from "sweetalert2";
 import { useState } from "react";
 
-async function uploadImage(file: File | null): Promise<string | undefined> {
+async function uploadImage(
+    file: File | null,
+    name: string
+): Promise<string | undefined> {
     if (file === null) return undefined;
     try {
-        const storageRef = ref(storage, "eventsImages/" + file.name);
+        const storageRef = ref(storage, "eventsImages/" + name);
         await uploadBytes(storageRef, file);
         return await getDownloadURL(storageRef);
     } catch (error) {
         console.log(error);
         return undefined;
     }
+}
+
+async function updateEvent(prevEvent: any, event: any, file: File | null) {
+    Swal.fire({
+        title: `¿Deseas Agregar el evento ${event.title}?`,
+        text: "Se guardará en la base de datos",
+        showDenyButton: true,
+        confirmButtonText: "Guardar",
+        denyButtonText: `Cancelar`,
+        icon: "question",
+        preConfirm: async () => {
+            Swal.showLoading();
+
+            try {
+                let datosUpdate = event;
+
+                Object.keys(datosUpdate).forEach((key) => {
+                    if (key !== "urlImage") {
+                        if (datosUpdate[key] === prevEvent[key]) {
+                            delete datosUpdate[key];
+                        }
+                    }
+                });
+
+                if (file) {
+                    const urlImage = await uploadImage(file, prevEvent.title);
+                    const newEvent = {
+                        ...datosUpdate,
+                        urlImage: urlImage,
+                    };
+                    await updateDoc(
+                        doc(database, "events", prevEvent.id),
+                        newEvent
+                    );
+                } else {
+                    await updateDoc(
+                        doc(database, "events", prevEvent.id),
+                        datosUpdate
+                    );
+                }
+
+                Swal.fire({
+                    title: "Guardado",
+                    icon: "success",
+                    text: `Se actualizó el evento ${
+                        datosUpdate.title ?? prevEvent.title
+                    }`,
+                });
+            } catch (e) {
+                console.log(e);
+                Swal.fire({
+                    title: "No se pudo actualizar el evento",
+                    icon: "error",
+                });
+            }
+        },
+    });
 }
 
 async function addEvent(event: any, file: File | null) {
@@ -29,7 +95,7 @@ async function addEvent(event: any, file: File | null) {
         preConfirm: async () => {
             Swal.showLoading();
             try {
-                const urlImage = await uploadImage(file);
+                const urlImage = await uploadImage(file, event.title);
                 const newEvent = {
                     ...event,
                     urlImage: urlImage,
@@ -43,7 +109,7 @@ async function addEvent(event: any, file: File | null) {
                     text: `Se guardo el evento ${event.title}`,
                 });
             } catch (e) {
-                console.log(e)
+                console.log(e);
                 Swal.fire({
                     title: "No se pudo guardar el evento",
                     icon: "error",
@@ -53,7 +119,8 @@ async function addEvent(event: any, file: File | null) {
     });
 }
 
-function convertToLocalISOString(date: Date) {
+function convertToLocalISOString(timestamp: Timestamp) {
+    const date = timestamp.toDate()
     const offset = date.getTimezoneOffset();
     const localDate = new Date(date.getTime() - offset * 60000);
     return localDate.toISOString().slice(0, 16);
@@ -92,7 +159,11 @@ export default function FormEvent({ event }: { event?: TEvent }) {
                         endDate: Timestamp.fromDate(new Date(endDate)),
                         url,
                     };
-                    addEvent(newEvent, image);
+                    if (!event) {
+                        addEvent(newEvent, image);
+                    } else {
+                        updateEvent(event, newEvent, image);
+                    }
                 }}
             >
                 <Form>

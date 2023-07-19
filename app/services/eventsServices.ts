@@ -13,8 +13,8 @@ export async function getEvents(): Promise<TEvent[]> {
         events.push({
             title: eventData.title ?? "",
             description: eventData.description ?? "",
-            startDate: eventData.startDate.toDate(),
-            endDate: eventData.endDate.toDate(),
+            startDate: eventData.startDate,
+            endDate: eventData.endDate,
             url: eventData.url,
             urlImage: eventData.urlImage,
             id: response.id,
