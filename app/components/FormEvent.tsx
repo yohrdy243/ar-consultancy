@@ -8,9 +8,10 @@ import {
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { database, storage } from "../../database";
-import { TEvent } from "../eventos/page";
+import { TEvent } from "../components/EventCard";
 import Swal from "sweetalert2";
 import { useState } from "react";
+import { timestampToDate } from "../utils/convert";
 
 async function uploadImage(
     file: File | null,
@@ -120,7 +121,7 @@ async function addEvent(event: any, file: File | null) {
 }
 
 function convertToLocalISOString(timestamp: Timestamp) {
-    const date = timestamp.toDate()
+    const date = timestampToDate(timestamp);
     const offset = date.getTimezoneOffset();
     const localDate = new Date(date.getTime() - offset * 60000);
     return localDate.toISOString().slice(0, 16);

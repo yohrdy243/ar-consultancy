@@ -1,7 +1,9 @@
 import { Timestamp } from "firebase/firestore";
 
 export function dateToString(timestamp: Timestamp) {
-    const date = timestamp.toDate()
+    const date = new Date(
+        timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000
+    );
     return date.toLocaleDateString("es-PE", {
         weekday: "long",
         day: "2-digit",
@@ -10,4 +12,8 @@ export function dateToString(timestamp: Timestamp) {
         minute: "numeric",
         hour12: true,
     });
+}
+
+export function timestampToDate(timestamp: Timestamp) {
+    return new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
 }

@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import FormEvent from "./FormEvent";
 import { UseModalType } from "../hooks/useModal";
-import { TEvent } from "../eventos/page";
+import { TEvent } from "../components/EventCard";
 
 export function AddEvent({ modal }: { modal: UseModalType }) {
     return (

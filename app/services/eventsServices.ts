@@ -1,4 +1,4 @@
-import { TEvent } from "../eventos/page";
+import { TEvent } from "../components/EventCard";
 import { collection, query, getDocs } from "firebase/firestore";
 import { database } from "@/database";
 

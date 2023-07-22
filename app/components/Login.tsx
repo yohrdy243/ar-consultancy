@@ -11,8 +11,6 @@ export default function Login({ setLoged }: { setLoged: () => void }) {
                     e.preventDefault();
                     const email = e.target[0].value;
                     const password = e.target[1].value;
-                    console.log(email, process.env.NEXT_PUBLIC_EMAIL)
-                    console.log(password,process.env.NEXT_PUBLIC_PASSWORD)
                     if (
                         email === process.env.NEXT_PUBLIC_EMAIL &&
                         password === process.env.NEXT_PUBLIC_PASSWORD
