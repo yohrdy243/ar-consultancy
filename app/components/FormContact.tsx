@@ -47,7 +47,7 @@ export function ModalFormContact({
     handleClose,
 }: TModalFromContact) {
     return (
-        <Modal show={show} handleClose={handleClose} title={title}>
+        <Modal isOpen={show} handleClose={handleClose} title={title}>
             <FormContact />
         </Modal>
     );
