@@ -43,15 +43,10 @@ export default function page() {
                             </p>
                         </div>
                         <div className="flex justify-center items-center">
-                            <Logo size={200} />
+                            <Logo size={300} />
                         </div>
                     </div>
                 </div>
-
-                <h1 className="flex justify-center text-4xl font-bold text-green-950">
-                    &
-                </h1>
-
                 <div className="flex flex-col justify-center gap-6 lg:px-32 px-8 mt-10">
                     <div className="grid grid-cols-1 lg:grid-cols-2  gap-20 font-normal antialiased text-justify">
                         <div className="col-span-1 flex flex-col gap-8">

@@ -5,7 +5,7 @@ import { TService, servicesData } from "../data/services";
 import Link from "next/link";
 export function Card({ children }: { children: ReactNode }) {
     return (
-        <div className="hover:text-green-700 transition-colors duration-100 ease-in-out border rounded-md p-8 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer">
+        <div className="hover:text-[#FF6915] transition-colors duration-100 ease-in-out border rounded-md p-8 flex flex-col gap-4 shadow-sm hover:shadow-md cursor-pointer">
             {children}
         </div>
     );

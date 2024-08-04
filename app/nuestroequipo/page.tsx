@@ -178,22 +178,7 @@ function TeamCard({
                         </div>
                     </div>
                 </div>
-                <div className="px-1 grid grid-cols-1 lg:grid-cols-2 gap-3 ">
-                    <div className="col-span-1 flex flex-col gap-y-6">
-                        <h1 className="text-xl font-semibold">Experiencia</h1>
-                        <div className="px-6 flex flex-col justify-start">
-                            <TimeLine data={experience} />
-                        </div>
-                    </div>
-                    <div className="col-span-1 flex flex-col gap-y-6">
-                        <h1 className="text-xl font-semibold">
-                            Certificaciones
-                        </h1>
-                        <div className="px-6 flex flex-col justify-start">
-                            <TimeLine data={certifications} />
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </>
     );

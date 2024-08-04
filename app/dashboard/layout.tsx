@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     }
     if (hasLoged) return <div>{children};</div>;
     return (
-        <div className="lg:px-32 px-8 lg:py-32 my-20 h-screen flex justify-center">
+        <div className="lg:px-32 px-8 lg:py-32 my-20 h-screen flex justify-center text-[#112D45]">
             <div className="w-[80%] lg:w-[30%] px-8 flex flex-col gap-12">
                 <h1 className="text-3xl font-bold text-center">Ingresar</h1>
                 <Login setLoged={setLoged} />

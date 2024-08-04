@@ -1,4 +1,5 @@
 import { Playfair_Display, Open_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import WhatsApp from "./components/WhatsApp";
@@ -16,6 +17,11 @@ export const playfair = Playfair_Display({
     variable: "--font-playfair",
 });
 
+const TruenoRegular = localFont({
+    src: "../public/fonts/TruenoRegular.otf",
+    variable: "--font-trueno",
+});
+
 export default function RootLayout({
     children,
 }: {
@@ -26,7 +32,7 @@ export default function RootLayout({
             <head>
                 <meta name="view-transition" content="same-origin" />
             </head>
-            <body className={`${playfair.variable} ${open.variable}`}>
+            <body className={`${TruenoRegular.className}`}>
                 <Navbar />
                 <main className="mt-20">{children}</main>
                 <WhatsApp />
